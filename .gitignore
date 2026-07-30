@@ -1,0 +1,14 @@
+.env
+
+# Chromedriver binary
+chromedriver
+chromedriver.exe
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# OS
+.DS_Store
