@@ -26,7 +26,7 @@ class FakeDriver:
 
 
 def test_no_rooms_message_means_not_available():
-    assert check_housing.rooms_available(FakeDriver(True)) is True
+    assert check_housing.rooms_available(FakeDriver(True)) is False
 
 
 def test_missing_message_means_rooms_available():
