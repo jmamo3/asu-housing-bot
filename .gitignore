@@ -3,6 +3,7 @@
 # Chromedriver binary
 chromedriver
 chromedriver.exe
+chromedriver.old
 
 # Python
 __pycache__/

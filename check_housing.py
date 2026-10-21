@@ -157,8 +157,18 @@ def watch_loop(driver):
 
 def main():
     options = webdriver.ChromeOptions()
-    options.add_argument("--start-maximized")
-    service = Service(CHROMEDRIVER_PATH)
+    if os.environ.get("HEADLESS", "false").lower() == "true":
+        options.add_argument("--headless=new")
+        options.add_argument("--no-sandbox")
+        options.add_argument("--disable-dev-shm-usage")
+        options.add_argument("--window-size=1920,1080")
+        chrome_binary = os.environ.get("CHROME_BINARY_PATH")
+        if chrome_binary:
+            options.binary_location = chrome_binary
+    else:
+        options.add_argument("--start-maximized")
+    
+    service = Service(CHROMEDRIVER_PATH) if os.path.exists(CHROMEDRIVER_PATH) else Service()
     driver = webdriver.Chrome(service=service, options=options)
 
     try:
